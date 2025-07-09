@@ -1,23 +1,26 @@
 local dialogueState = {}
+local dialogueRes = require("dialogueRes")
 
-local dialogue = {
-    "my old swiss army knife",
-    "stem cells, nothing is direct",
-    "everything is love,\neverything is love",
-    "take the leap,\nwelcome to the plant cell bath"
-}
+local dialogue = {}
 local currentIndex = 1
+local mode = "textbox"
 
 --------------------------enter/exit---------------------------
 
 function dialogueState.enter()
+    local key = "dialogue2"
+    dialogue = dialogueRes.getDialogue(key)
+
+    if dialogue["cutin"] == true then
+        mode = "cutin"
+    else
+        mode = "textbox"
+    end
     currentIndex = 1
     dialogueState.printCurrentLine()
 end
 
 function dialogueState.exit()
-    --textbox.setDisplayText("")
-    cutin.print("")
     stateStack.pop()
 end
 
@@ -34,20 +37,29 @@ function dialogueState.mousePressed(x, y)
 end
 
 function dialogueState.update(dt, xmouse, ymouse)
-    --textbox.update(dt)
-    cutin.update()
+    if mode == "textbox" then
+        textbox.update(dt)
+    elseif mode == "cutin" then
+        cutin.update()
+    end
 end
 
 function dialogueState.draw()
-    --textbox.draw()
-    cutin.draw()
+    if mode == "textbox" then
+        textbox.draw()
+    elseif mode == "cutin" then
+        cutin.draw()
+    end
 end
 
 ------------------------core functions-------------------------
 
 function dialogueState.printCurrentLine()
-    --textbox.beginTyping(dialogue[currentIndex])
-    cutin.print(dialogue[currentIndex])
+    if mode == "textbox" then
+        textbox.beginTyping(dialogue[currentIndex])
+    elseif mode == "cutin" then
+        cutin.print(dialogue[currentIndex])
+    end
     currentIndex = currentIndex + 1
 end
 

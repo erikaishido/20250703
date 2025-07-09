@@ -9,6 +9,21 @@ function stateStack.load()
     dialogueState = require("state/dialogueState")
 end
 
+------------------------stack manipulation----------------------------
+
+function stateStack.push(newState, ...)
+    table.insert(stack, newState)
+    stack[#stack].enter(...)
+end
+
+function stateStack.pop()
+    table.remove(stack, #stack)
+end
+
+function stateStack.top()
+    return stack[#stack]
+end
+
 -----------------------------game loop--------------------------------
 
 function stateStack.mousePressed(x, y)
@@ -26,21 +41,6 @@ function stateStack.draw()
         stack[i].draw()
     end
     love.graphics.print(getEntireStack(), 5, 5)
-end
-
-------------------------stack manipulation----------------------------
-
-function stateStack.push(newState, ...)
-    table.insert(stack, newState)
-    stack[#stack].enter()
-end
-
-function stateStack.pop()
-    table.remove(stack, #stack)
-end
-
-function stateStack.top()
-    return stack[#stack]
 end
 
 --------------------------debug idk----------------------------
