@@ -41,7 +41,7 @@ end
 
 ----------------------------------------------------------------------
 
-function textbox.beginTyping(text)
+function textbox.print(text)
     displayText = ""
     textToChars = {}
     charIndex = 1

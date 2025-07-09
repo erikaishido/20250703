@@ -3,18 +3,23 @@ local dialogueRes = require("dialogueRes")
 
 local dialogue = {}
 local currentIndex = 1
-local mode = "textbox"
+
+local mode = "text"
+local modes = {
+    text = textbox,
+    cut = cutin
+}
 
 --------------------------enter/exit---------------------------
 
 function dialogueState.enter()
-    local key = "dialogue2"
+    local key = "dialogue2"     -- test
     dialogue = dialogueRes.getDialogue(key)
 
     if dialogue["cutin"] == true then
-        mode = "cutin"
+        mode = "cut"
     else
-        mode = "textbox"
+        mode = "text"
     end
     currentIndex = 1
     dialogueState.printCurrentLine()
@@ -37,29 +42,17 @@ function dialogueState.mousePressed(x, y)
 end
 
 function dialogueState.update(dt, xmouse, ymouse)
-    if mode == "textbox" then
-        textbox.update(dt)
-    elseif mode == "cutin" then
-        cutin.update()
-    end
+    modes[mode].update(dt)
 end
 
 function dialogueState.draw()
-    if mode == "textbox" then
-        textbox.draw()
-    elseif mode == "cutin" then
-        cutin.draw()
-    end
+    modes[mode].draw()
 end
 
 ------------------------core functions-------------------------
 
 function dialogueState.printCurrentLine()
-    if mode == "textbox" then
-        textbox.beginTyping(dialogue[currentIndex])
-    elseif mode == "cutin" then
-        cutin.print(dialogue[currentIndex])
-    end
+    modes[mode].print(dialogue[currentIndex])
     currentIndex = currentIndex + 1
 end
 
