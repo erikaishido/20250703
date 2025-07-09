@@ -17,6 +17,7 @@ function love.load()
     )
     font1:setLineHeight(1.4)
 
+    stateStack.load()
     portrait.load()
     actions.load()
     cutin.load()

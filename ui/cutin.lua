@@ -30,12 +30,12 @@ end
 function cutin.draw(dt)
     -- draw portrait1
     love.graphics.setColor(183/255, 196/255, 215/255)
-    cutin.slantedRectangle2(xpor1, ypor1, wporRect, hporRect)
+    cutin.slantedRect(xpor1, ypor1, wporRect, hporRect)
     love.graphics.draw(cutin.por1, xpor1+130, ypor1-20, 0, -1, 1)
 
     -- draw portrait2
     love.graphics.setColor(224/255, 209/255, 236/255)
-    cutin.slantedRectangle2(xpor2, ypor2, wporRect, hporRect)
+    cutin.slantedRect(xpor2, ypor2, wporRect, hporRect)
     love.graphics.draw(cutin.por2, xpor2+10, ypor2-20)
 
     -- draw textbox
@@ -49,7 +49,7 @@ end
 
 ----------------------------------------------------------------------
 
-function cutin.slantedRectangle2(x, y, width, height)
+function cutin.slantedRect(x, y, width, height)
     for i = 0, height-1, 2 do
         love.graphics.rectangle('fill', x-i/2, y+i, width , 2)
     end

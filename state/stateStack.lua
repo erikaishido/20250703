@@ -1,13 +1,13 @@
 local stateStack = {}
 
--- states (global!!!!!?????? fucked up man)
--- each "state" is just a group of functions w/ identical names
-homeState = require("state/homeState")
-excelState = require("state/excelState")
-dialogueState = require("state/dialogueState")
-
 -- ye olde stack
 local stack = {}
+
+function stateStack.load()
+    homeState = require("state/homeState")      -- they all global
+    excelState = require("state/excelState")
+    dialogueState = require("state/dialogueState")
+end
 
 -----------------------------game loop--------------------------------
 
