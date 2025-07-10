@@ -8,9 +8,15 @@ local allDialogues = {
         "take the leap,\nwelcome to the plant cell bath"
     },
     dialogue2 = {
-        cutin = true,
-        mode = "cutin",
-        "hell yeah a cutin"
+        mode = "cut",
+        "hell yeah a cutin",
+        "this is a really cool cutin"
+    },
+    dialogue3 = {
+        mode = "cut",
+        "npc: im at a payphone",
+        "player: tying to call home",
+        "npc: all of my change ive spent on you"
     }
 }
 

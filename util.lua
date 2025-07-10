@@ -18,4 +18,12 @@ function util.getTextDimensions(text)
     return width, height
 end
 
+-- draw a slanted rectangle
+function util.slantRect(x, y, width, height)
+    for i = 0, height-1, 2 do
+        love.graphics.rectangle('fill', x-i/2, y+i, width, 2)
+    end
+    love.graphics.setColor(255, 255, 255)
+end
+
 return util

@@ -1,10 +1,10 @@
 -- global modules
 stateStack = require("state/stateStack")
-textbox = require("ui/textbox")
+textbox = require("dialogue/textbox")
 portrait = require("ui/portrait")
 util = require("util")
 actions = require("ui/actions")
-cutin = require("ui/cutin")
+cutin = require("dialogue/cutin")
 
 ----------------------booting the bad boy up--------------------------
 

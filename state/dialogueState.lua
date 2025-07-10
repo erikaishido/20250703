@@ -1,5 +1,5 @@
 local dialogueState = {}
-local dialogueRes = require("dialogueRes")
+local dialogueRes = require("dialogue/dialogueRes")
 
 local dialogue = {}
 local currentIndex = 1
@@ -16,10 +16,10 @@ function dialogueState.enter()
     local key = "dialogue2"     -- test
     dialogue = dialogueRes.getDialogue(key)
 
-    if dialogue["cutin"] == true then
-        mode = "cut"
-    else
+    if dialogue["mode"] == nil then
         mode = "text"
+    else 
+        mode = dialogue["mode"]
     end
     currentIndex = 1
     dialogueState.printCurrentLine()

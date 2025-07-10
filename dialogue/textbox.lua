@@ -1,10 +1,24 @@
 local textbox = {}
 
-local isVisible = true
 local xorigin = 125        -- dimentions
 local yorigin = 150
 local width = 240
 local height = 60
+
+local dimensions = {
+    default = {
+        x = 125,
+        y = 150,
+        width = 240,
+        height = 60
+    },
+    cutin = {
+        x = 105,
+        y = 120,
+        width = 200,
+        height = 60
+    }
+}
 
 -- for typing out characters
 local isTyping = false
@@ -14,9 +28,6 @@ local charIndex = 1
 -- typing timer
 local typeTimer = 0
 local typeDuration = 0.03
-
-
---"(…I don't even want to be here.\nNo, not really.)"
 
 -----------------------------game loop--------------------------------
 
